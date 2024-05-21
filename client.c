@@ -35,16 +35,24 @@ int main(void)
     work3.a = 1;
     work3.b = 6;
 
+    struct data work4;
+    work4.a = 4;
+    work4.b = 4;
+
+    struct data work5;
+    work5.a = 14;
+    work5.b = -5;
+
     // initialize the thread pool
     pool_init();
 
     // submit the work to the queue
     pool_submit(&add,&work);
     pool_submit(&add,&work2);
-    pool_submit(&add,&work2);
     pool_submit(&add,&work3);
-    pool_submit(&add,&work);
-    pool_submit(&add,&work3);
+    pool_submit(&add,&work4);
+    pool_submit(&add,&work5);
+
 
 
 

@@ -17,9 +17,9 @@ sem_t sema;
 int head = 0; // индексы начала и хвоста списка
 int tail = 0;
 
-// this represents work that has to be 
+// this represents work that has to be
 // completed by a thread in the pool
-typedef struct 
+typedef struct
 {
     void (*function)(void *p);
     void *data;
@@ -34,7 +34,7 @@ task queue[QUEUE_SIZE + 1];
 pthread_t bee [NUMBER_OF_THREADS];
 
 // insert a task into the queue
-// returns 0 if successful or 1 otherwise, 
+// returns 0 if successful or 1 otherwise,
 int enqueue(task t) {
     pthread_mutex_lock(&mutex);// блокируем , чтобы к очереди никто не мог обратиться к очереди
 
@@ -113,7 +113,7 @@ void pool_init(void)
     sem_init(&sema, 0, 0);// инициализация самафора и мютекса
     pthread_mutex_init(&mutex, NULL);
     for (int i = 0; i < NUMBER_OF_THREADS; i++)
-        pthread_create(&bee[i],NULL,worker,NULL);// создаем каждый поток со статусом worker
+        pthread_create(&bee[i],NULL,worker,NULL);// создаем каждый поток с указателем worker
 }
 
 // shutdown the thread pool
